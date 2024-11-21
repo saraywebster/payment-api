@@ -37,10 +37,3 @@ Clone o repositório e instale as dependências:
     cd payment-api
     npm install
  ```
-```
-  bash
-  git clone https://github.com/saraywebster/payment-api.git
-  cd payment-api
-  npm install
-``` 
-
