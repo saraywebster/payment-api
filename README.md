@@ -32,16 +32,15 @@ API de pagamentos com **Node.js** e **NestJS**, integração com **Mercado Pago*
 Clone o repositório e instale as dependências:
 
 ```
-<<<<<<< HEAD
     bash
     git clone https://github.com/saraywebster/payment-api.git
     cd payment-api
     npm install
+ ```
 ```
-=======
   bash
   git clone https://github.com/saraywebster/payment-api.git
   cd payment-api
   npm install
 ``` 
->>>>>>> 844d2fa736e1e9502a2b7aa85628d7d1eb803608
+
