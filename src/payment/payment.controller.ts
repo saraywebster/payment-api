@@ -4,17 +4,11 @@ import {
   Get,
   HttpException,
   HttpStatus,
-  NotFoundException,
   Param,
-  Patch,
   Post,
-  Put,
-  UsePipes,
-  ValidationPipe,
 } from '@nestjs/common';
 import { PaymentService } from './payment.service';
-import { NotFoundError } from 'rxjs';
-import { UpdatePaymentDto } from './updatePayment.dto';
+
 import { CreatePaymentDto } from './createPayment.dto';
 
 @Controller('payment')
@@ -39,21 +33,21 @@ export class PaymentController {
     return this.paymentService.create(createPaymentDto);
   }
 
-  @Patch(':id')
-  @UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
-  async updatePayment(
-    @Param('id') id: number,
-    @Body() updatePaymentDto: UpdatePaymentDto,
-  ) {
-    const updatedPayment = await this.paymentService.updatePartial(
-      id,
-      updatePaymentDto,
-    );
+  // @Patch(':id')
+  // @UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
+  // async updatePayment(
+  //   @Param('id') id: number,
+  //   @Body() updatePaymentDto: UpdatePaymentDto,
+  // ) {
+  //   const updatedPayment = await this.paymentService.updatePartial(
+  //     id,
+  //     updatePaymentDto,
+  //   );
 
-    if (!updatedPayment) {
-      throw new NotFoundException(`Payment with ${id} not found`);
-    }
+  //   if (!updatedPayment) {
+  //     throw new NotFoundException(`Payment with ${id} not found`);
+  //   }
 
-    return updatedPayment;
-  }
+  //   return updatedPayment;
+  // }
 }

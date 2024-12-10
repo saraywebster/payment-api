@@ -5,7 +5,11 @@ import {
   Min,
   Max,
   Length,
+  IsString,
+  IsEnum,
 } from 'class-validator';
+import { Column } from 'typeorm';
+import { PaymentMethod } from './payment-method.enum';
 
 export class CreatePaymentDto {
   @IsNumber(
@@ -13,15 +17,17 @@ export class CreatePaymentDto {
     { message: 'Amount must be a valid number' },
   )
   @Min(0.01, { message: 'Amount must be greater than 0' })
-  @Max(1000000, { message: 'Amount must be less than or equal to 1,000,000' })
   amount: number;
 
+  @IsOptional()
   @Length(1, 255, {
     message: 'Description must be between 1 and 255 characters',
   })
   description: string;
 
-  @IsBoolean({ message: 'Confirmed must be a boolean value (true or false)' })
-  @IsOptional()
-  confirmed?: boolean;
+  @IsString({ message: 'Payment email must be a string' })
+  payment_email: string;
+
+  @IsEnum(PaymentMethod, { message: 'Invalid payment method' })
+  paymentMethod: string;
 }
